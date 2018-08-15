@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.user.dao.user.Oauth2ClientDao">
+
+    <resultMap id="base-column-oauth2_client"
+               type="com.example.user.entity.user.Oauth2Client">
+        <result property="id" column="id"/>
+        <result property="clientId" column="client_id"/>
+        <result property="accessTokenValiditySeconds" column="access_token_validity_seconds"/>
+        <result property="refreshTokenValiditySeconds" column="refresh_token_validity_seconds"/>
+        <collection property="grantTypes" ofType="java.lang.String" javaType="java.util.Set">
+            <result column="grant_type"/>
+        </collection>
+    </resultMap>
+
+    <select id="findByClientId" resultMap="base-column-oauth2_client">
+        select * from oauth2_client oc
+        left join oauth2_client_grant_type gt on oc.id = gt.oauth2_client_id
+        where oc.client_id = #{clientId}
+    </select>
+
+</mapper>

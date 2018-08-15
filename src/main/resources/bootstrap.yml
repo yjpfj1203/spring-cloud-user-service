@@ -1,0 +1,64 @@
+server:
+    port: 8888         #服务端口配置
+security:
+    oauth2:
+        resource:
+            filter-order: 3
+
+spring:
+#    application:
+#        name: creams-web-service
+#    cloud:
+#        config:
+#            uri: https://dev-config.creams.io
+#            username: creams_user
+#            password: Souban701
+    datasource:
+        url: jdbc:mysql://localhost:3306/web_test?useUnicode=true&characterEncoding=utf8&useSSL=true
+        username: root
+        password: lh1203
+    ###############################
+    #         redis服务器          #
+    redis:
+        url: redis://localhost:6379
+
+############################
+#        mybatis配置       #
+mybatis:
+    check-config-location: true
+    mapper-locations: classpath*:mapper/*.xml
+    type-aliases-package: com.example.web.dao
+web:
+    jwtFileName: jwt.jks
+
+#生成jwt.jks的方式如下
+#keytool -genkeypair -alias liuhan -keyalg RSA  -keypass yjpfj1203  -keystore jwt.jks  -storepass yjpfj1203
+#keytool -list -rfc --keystore jwt.jks | openssl x509 -inform pem -pubkey
+
+
+logging:
+    level:
+        io:
+            creams: debug
+
+
+#四个配置文件，application.yml， application-profile.yml, applicationName.yml, applicationName-profile.yml
+---
+spring:
+    profiles: local
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: admin
+        password: admin
+
+---
+spring:
+    profiles: local
+    cloud:
+        config:
+            uri: http://localhost:9100
+
+
+
+
