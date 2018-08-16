@@ -1,7 +1,8 @@
 # spring-cloud-user-service
 spring cloud user service
 
-因为之后此项目，分用于spring-cloud，所以会不断更新，所以这里用分支来区分。version-one分支是此页面所讲述的内容，可独立部属。<br>
+因为之后此项目，会用于spring-cloud的用户系统，所以会不断更新。<br>
+所以这里用分支来区分。version-one分支是此页面所讲述的内容，可独立部属。<br>
 至于master分支，目前还没确定是否会用于spring-cloud的demo上。后台待定。<br>
 
 user-service用户系统
