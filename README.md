@@ -7,9 +7,11 @@ user-service用户系统
 这个用于之后搭建spring cloud的用户系统，目前刚开始。还没想太清楚写个什么demo项目，会将相关知识点慢慢整合进这个项目中。<br>
 
 要点：<br>
-一：jwt+oauth2配置(参考项目中使用代码完成)<br>
-二：redis缓存存储 参考：https://www.cnblogs.com/yanduanduan/p/6552861.html(这个内容挺全的)<br>
-三：自定义权限注解(custom security expression) 参考见：https://www.baeldung.com/spring-security-create-new-custom-security-expression<br>
+一、jwt+oauth2<br>
+二、redis缓存存储 参考：https://www.cnblogs.com/yanduanduan/p/6552861.html(这个内容挺全的)<br>
+三、自定义权限注解(custom security expression) 参考见：https://www.baeldung.com/spring-security-create-new-custom-security-expression<br>
+四、java8的stream操作(这个之后再写个单独的demo项目)
+五、单元测试(jUnit)
 
 配置结构简单简单说下，其他的东西大家都能秒懂。<br>
 * config：配置文件所在目录<br>
@@ -66,5 +68,131 @@ user-service用户系统
 连接1：http://localhost:8888/users/self/1   返回结果：你是当前登录者。<br>
 连接2：http://localhost:8888/users/self/1   返回结果：access_denied
 
+下面是单元测试部分一些说明<br>
+---
+安装插件：JUnitGenerator V2.0<br>
+引入random包
+```java
+	<dependency>
+		<groupId>io.github.benas</groupId>
+		<artifactId>random-beans</artifactId>
+		<version>3.7.0</version>
+		<scope>test</scope>
+	</dependency>
+```
 
+进入如下图页面<br>
+![junit配置test文件的输出位置](https://raw.githubusercontent.com/yjpfj1203/static-resource/master/jUnit-properties.png)
+内容如上图，Output Path:  ${SOURCEPATH}/../../test/java/${PACKAGE}/${FILENAME}<br>
+
+重写JUnit4模块的内容，如下图<br>
+![junit配置输出文件内容](https://raw.githubusercontent.com/yjpfj1203/static-resource/master/junit4-code.png)
+具体内容如下<br>
+```velocity
+## 这部分内容使用的是velocity语法
+## 定义两个方法，cap首字母大写，lap首字母小写
+#macro (cap $strIn)$strIn.valueOf($strIn.charAt(0)).toUpperCase()$strIn.substring(1)#end 
+#macro (lap $strIn)$strIn.valueOf($strIn.charAt(0)).toLowerCase()$strIn.substring(1)#end 
+## Iterate through the list and generate testcase for every entry. 
+#foreach ($entry in $entryList) 
+#set( $testClass="${entry.className}Test") 
+## 
+package $entry.packageName; 
+
+import org.junit.Test; 
+import org.junit.Before; 
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.junit.After; 
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import static io.github.benas.randombeans.api.EnhancedRandom.random;
+import static io.github.benas.randombeans.api.EnhancedRandom.randomStreamOf;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyList;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
+
+/** 
+ * ${entry.className} Tester. 
+ * 
+ * @author liuhan 
+ * @since $date
+ * @version 1.0 
+ */ 
+@RunWith(MockitoJUnitRunner.class)
+public class $testClass { 
+    @InjectMocks
+    private ${entry.className} #lap(${entry.className});
+    
+#foreach($field in $entry.fieldList)
+    @Mock
+    private #cap(${field}) ${field};
+#end 
+
+    @Before
+    public void before() throws Exception { 
+    } 
+    
+    @After
+    public void after() throws Exception { 
+    } 
+    
+    #foreach($method in $entry.methodList) 
+/** 
+     * @author liuhan 
+     * @since $date
+     * Method: $method.signature 
+     */ 
+    @Test
+    public void test#cap(${method.name})() { 
         
+    } 
+    
+    #end 
+    
+} 
+#end
+```
+进入要测试的类，如：UserService
+在页面处：command+N -> JUnit test -> JUnit 4 创建测试类
+
+具体注解说明如下<br>
+* @RunWith(MockitoJUnitRunner.class)<br>
+主类添加<br>
+   * 注解<br>
+    @InjectMocks 主测类<br>
+    @Spy         主测类中要调用的内部方法时使用<br>
+    private UserService userService;<br>
+    @Mock        主测类中要引用的其他类<br>
+    private UserRepository userRepository;<br>
+   * 如果测试其他service的方法，且此方法又调用的其他的repository等，则在before中预定义。
+   ```java
+    @Before
+    public void before() {
+        doNothing().when(passwordHistoryService).savePasswordHistory(any(), anyString());
+    }
+   ```
+   
+
+   * 异常测试<br>
+   @Test(expected = UnProcessableEntityException.class) //期望得到UnProcessableEntityException异常<br>
+
+   * mock实体类<br>
+      * import static io.github.benas.randombeans.api.EnhancedRandom.random;<br>
+        例：random(UserCreateRequest.class)<br>
+        //指定User中哪些属性不mock<br>
+        random(User.class, "customer", "userSetting", "customBalance" );<br>
+      * import static io.github.benas.randombeans.api.EnhancedRandom.randomSetOf;<br>
+        例：randomSetOf(2, User.class)<br>
+      * import static org.mockito.Matchers.*;<br>
+        例：any()
+      * import static org.mockito.Mockito.doNothing;<br>
+        例：doNothing().when(passwordHistoryService).savePasswordHistory(any(), anyString());<br>
+      * import static org.mockito.Mockito.when;<br>
+        例：when(userLogRepository.save((UserLog) anyObject())).thenReturn(log);<br>
+
+
+
+
