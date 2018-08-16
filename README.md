@@ -11,7 +11,7 @@ user-service用户系统
 二：redis缓存存储 参考：https://www.cnblogs.com/yanduanduan/p/6552861.html(这个内容挺全的)<br>
 三：自定义权限注解(custom security expression) 参考见：https://www.baeldung.com/spring-security-create-new-custom-security-expression<br>
 
-先了解下这个结构，<br>
+配置结构简单简单说下，其他的东西大家都能秒懂。<br>
 * config：配置文件所在目录<br>
   * 1)：CustomPermissionEvaluator：重载PermissionEvaluator，这里也可以自定义hasPermission方法；<br> 
     2)：CustomMethodSecurityExpressionHandler：装载自定义的权限注解;<br>
@@ -27,7 +27,6 @@ user-service用户系统
   * tokenEnhancer，将用户数据及用户权限封装入token中
 * 配置文件目前写在bootstrap.yml中<br>
 
-代码结构至此大致介绍结束，其他的东西大家都能秒懂。<br>
 <br>
 项目运行准备：<br>
 1：创建数据库，但别忘记改数据库配置<br>
