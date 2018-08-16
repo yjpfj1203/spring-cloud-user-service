@@ -11,9 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 /**
- * Created by wu fei.
- * Date : 2017/3/27
- * Time : 下午3:21
+ * 手机验证码登录的provider
  */
 @Component
 public class VerificationCodeAuthenticationProvider implements AuthenticationProvider {

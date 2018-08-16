@@ -8,8 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by frank on 07/07/2016.
- * Email登陆专用
+ * 用户登录登陆专用
  */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

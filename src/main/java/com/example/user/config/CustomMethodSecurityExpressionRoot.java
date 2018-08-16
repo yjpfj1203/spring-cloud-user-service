@@ -1,18 +1,15 @@
 package com.example.user.config;
 
 import com.example.user.constants.RedisPrefixConstant;
-import com.example.user.constants.RedisService;
+import com.example.user.util.RedisService;
 import com.example.user.controller.model.CurrentUser;
 import com.example.user.util.AppContextUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.expression.SecurityExpressionRoot;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionOperations;
 import org.springframework.security.core.Authentication;
 import org.springframework.util.CollectionUtils;
 
-import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 

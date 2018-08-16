@@ -27,16 +27,14 @@ public class Region {
 
     private String areaName;
 
-    private Long blockId;
+    private Long streetId;
 
-    private String blockName;
+    private String streetName;
 
     private boolean deleted;
 
     private Date lastModifiedDate;
 
     private Date createdDate;
-
-    private Long version;
 
 }

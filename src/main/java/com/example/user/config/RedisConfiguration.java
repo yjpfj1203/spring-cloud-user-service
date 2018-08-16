@@ -8,7 +8,7 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 
 /**
  * 配置redis
- * 需要添加
+ * 需要添加配置：spring.redis.url: redis://localhost:6379
  */
 @Configuration
 @EnableRedisRepositories

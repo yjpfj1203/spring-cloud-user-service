@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * Created by frank on 07/07/2016.
+ * securityConfiguration
  */
 @Configuration
 /**
@@ -41,12 +41,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticationProvider(passwordAuthenticationProvider).userDetailsService(customUserDetailsService).passwordEncoder(passwordencoder());
     }
 
+    /**
+     * 配置autheticationManagerBean
+     * @return
+     * @throws Exception
+     */
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
+    /**
+     * 这个配置和resourceServerConfiguration配置有什么关系，目前没去了解
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()

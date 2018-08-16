@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
+/**
+ * 角色对应的权限
+ */
 @Setter
 @Getter
 @NoArgsConstructor

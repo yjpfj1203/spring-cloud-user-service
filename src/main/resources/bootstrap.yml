@@ -10,9 +10,9 @@ spring:
 #        name: creams-web-service
 #    cloud:
 #        config:
-#            uri: https://dev-config.creams.io
-#            username: creams_user
-#            password: Souban701
+#            uri: https://config.****.**
+#            username: *****
+#            password: ********
     datasource:
         url: jdbc:mysql://localhost:3306/web_test?useUnicode=true&characterEncoding=utf8&useSSL=true
         username: root
@@ -27,7 +27,7 @@ spring:
 mybatis:
     check-config-location: true
     mapper-locations: classpath*:mapper/*.xml
-    type-aliases-package: com.example.web.dao
+    type-aliases-package: com.example.user.dao
 web:
     jwtFileName: jwt.jks
 

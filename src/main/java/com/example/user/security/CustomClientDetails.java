@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by Steven on 2016-07-11.
+ * clientDetails
  */
 public class CustomClientDetails extends Oauth2Client implements org.springframework.security.oauth2.provider.ClientDetails {
 

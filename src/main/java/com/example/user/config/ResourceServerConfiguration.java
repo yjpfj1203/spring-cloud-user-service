@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 
 /**
- * Created by Steven on 2016-07-08.
+ * http 请求配置
  */
 @Configuration
 @EnableResourceServer
@@ -21,30 +21,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
-                .antMatchers("/users/login",
-                        "/users/login/oa",
-                        "/users/login/refresh",
-                        "/users/application",
-                        "/users/password/replacement",
-                        "/users/verification-code/application",
-                        "/users/register",
-                        "/agents/filter",
-                        "/operation/news",
-                        "/operation/news/{id}",
-                        "/demands/sources",
-                        "/commons/regions",
-                        "/commons/regions/block",
-                        "/commons/companies",
-                        "/alipay/callback",
-                        "/v2/api-docs",
-                        "/taikang/approval",
-                        "/taikang/haiwen/invoices",
-                        "/health",
-                        "/piaojj/invoice/success-callback", // 票++ 开票成功回调
-                        "/piaojj/invoice/fail-callback", // 票++ 开票失败回调
-                        "/taikang/epay/notify",
-                        "/oss/local/download"
-                ).permitAll()
+                .antMatchers("/users/test",
+                        "/user/login").permitAll()  //配置哪些请求路径，不需要token验证
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/swagger-ui.html").failureUrl("/login?error");
     }

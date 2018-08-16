@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by frank on 07/07/2016.
+ * customerUserDetails
  */
 public class CustomUserDetails extends User implements org.springframework.security.core.userdetails.UserDetails {
 

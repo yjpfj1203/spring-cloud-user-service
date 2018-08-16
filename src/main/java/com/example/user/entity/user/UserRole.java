@@ -6,6 +6,9 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
+/**
+ * 用户拥有的角色
+ */
 @Setter
 @Getter
 @NoArgsConstructor

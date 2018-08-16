@@ -1,5 +1,8 @@
 package com.example.user.enums;
 
+/**
+ * scope
+ */
 public enum ScopeEnum {
     ARTICLE(0, "文章"),
     USER(1, "人员管理");

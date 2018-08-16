@@ -27,6 +27,12 @@ public class UserController {
         return userDao.findAll();
     }
 
+    @GetMapping(value = "/test")
+    public String testNoToken(@AuthenticationPrincipal CurrentUser user){
+
+        return "无token验证OK";
+    }
+
     @PreAuthorize("hasPermission('USER_CRUD')")
     @PostMapping
     public Long saveUser(@RequestBody UserRequest userRequest,

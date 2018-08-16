@@ -1,4 +1,4 @@
-package com.example.user.constants;
+package com.example.user.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -10,6 +10,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * redisService
+ */
 @Component
 public class RedisService {
     @Autowired

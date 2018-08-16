@@ -14,7 +14,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Created by frank on 01/08/2016.
+ * @author yjpfj1203
+ * 解析token用的配置
  */
 public class CustomUserTokenConverter implements UserAuthenticationConverter {
 
@@ -63,6 +64,14 @@ public class CustomUserTokenConverter implements UserAuthenticationConverter {
         return null;
     }
 
+    /**
+     * 获取token中的authorities
+     * 这里面有两个类型，一个是permission，一个是role
+     * 1、role：必须在前面添加"ROLE_"，比如，是ADMIN权限，添加到authorities中为"ROLE_ADMIN"，方可用hasAuthorize(hasRole('ADMIN'));
+     * 2、permission：可用hasAuthorize(hasAuthority('USER_DELETE') 或是 hasAuthorize(hasAuthority('ROLE_ADD')
+     * @param map
+     * @return
+     */
     private Collection<? extends GrantedAuthority> getAuthorities(Map<String, ?> map) {
         if (!map.containsKey(AUTHORITIES)) {
             return defaultAuthorities;
@@ -78,6 +87,11 @@ public class CustomUserTokenConverter implements UserAuthenticationConverter {
         throw new IllegalArgumentException("Authorities must be either a String or a Collection");
     }
 
+    /**
+     * 将token转换为currentUser
+     * @param map
+     * @return
+     */
     private CurrentUser extract(Map<String, ?> map){
         HashMap<String, Object> userMap = (HashMap<String, Object>) map.get("user");
 

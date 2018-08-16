@@ -8,7 +8,7 @@ import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by Steven on 2016-07-11.
+ * clientDetailsService
  */
 @Service
 public class CustomClientDetailsService implements ClientDetailsService {

@@ -6,7 +6,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Steven on 2016-07-19.
+ * @author yjpfj1203
+ * oauth2配置系统支持的clientId
+ * token和refreshToken的过期时间
  */
 @NoArgsConstructor
 public class Oauth2Client {

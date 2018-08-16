@@ -1,7 +1,7 @@
 package com.example.user.config;
 
 import com.example.user.constants.RedisPrefixConstant;
-import com.example.user.constants.RedisService;
+import com.example.user.util.RedisService;
 import com.example.user.entity.user.Role;
 import com.example.user.entity.user.RolePermission;
 import com.example.user.service.PermissionService;

@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 public class UserApplication {
 	public static void main(String[] args) {
+		//启动设置applicationContext
 		ApplicationContext ctx = SpringApplication.run(UserApplication.class, args);
 		AppContextUtil.setApplicationContext(ctx);
 	}

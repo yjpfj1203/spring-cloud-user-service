@@ -1,5 +1,8 @@
 package com.example.user.enums;
 
+/**
+ * 权限集合
+ */
 public enum PermissionEnum {
     USER_READ("查看人员信息", ScopeEnum.USER),
     USER_CRUD("人员管理", ScopeEnum.USER),

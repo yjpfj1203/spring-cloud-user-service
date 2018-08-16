@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.user.dao.RegionDao">
+
+    <resultMap id="base-column-region"
+               type="com.example.user.entity.Region">
+        <result property="id" column="id"/>
+        <result property="provinceId" column="province_id"/>
+        <result property="provinceName" column="province_name"/>
+        <result property="cityId" column="city_id"/>
+        <result property="cityName" column="city_name"/>
+        <result property="areaId" column="area_id"/>
+        <result property="areaName" column="area_name"/>
+        <result property="streetId" column="street_id"/>
+        <result property="streetName" column="street_name"/>
+        <result property="deleted" column="deleted"/>
+        <result property="lastModifiedDate" column="last_modified_date"/>
+        <result property="createdDate" column="created_date"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="base-column-region">
+        select * from region where deleted = false
+    </select>
+</mapper>

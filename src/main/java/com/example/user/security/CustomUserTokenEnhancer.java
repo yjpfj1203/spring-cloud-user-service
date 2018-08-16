@@ -1,7 +1,7 @@
 package com.example.user.security;
 
 import com.example.user.constants.RedisPrefixConstant;
-import com.example.user.constants.RedisService;
+import com.example.user.util.RedisService;
 import com.example.user.controller.model.CurrentUser;
 import com.example.user.dao.user.UserRoleDao;
 import com.example.user.entity.user.UserRole;
