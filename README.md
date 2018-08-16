@@ -57,11 +57,12 @@ user-service用户系统
 3：用户查询权限验证，带上token，header添加"Authorization：Bearer 生成的accessToken"，请求连接、http://localhost:8888/users<br>
 返回结果：用户列表<br>
 
-
 4：部门查询权限验证，token同上，请求连接、http://localhost:8888/departments<br>
 返回结果：access_denied<br>
+
 5：无token验证，不带token，请求连接、http://localhost:8888/users/test<br>
 返回结果：无token验证OK<br>
+
 6：自定义isSelf权限验证<br>
 连接1：http://localhost:8888/users/self/1   返回结果：你是当前登录者。<br>
 连接2：http://localhost:8888/users/self/1   返回结果：access_denied
