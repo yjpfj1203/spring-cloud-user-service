@@ -45,9 +45,9 @@
         </trim>
     </select>
 
-    <insert id="insertUser" parameterType="com.example.user.entity.user.User">
-        insert into user (email, name, password, tel, wechat_number, active, deleted, created_date)
-        value (#{email}, #{name}, #{password}, #{tel}, #{wechatNumber}, true, false, now())
+    <insert id="insertUser" keyColumn="id" keyProperty="id" useGeneratedKeys="true" parameterType="com.example.user.entity.user.User">
+        insert into user (email, name, username, password, tel, wechat_number, active, deleted, created_date)
+        value (#{email}, #{name}, #{username}, #{password}, #{tel}, #{wechatNumber}, true, false, now())
     </insert>
 
     <update id="updateUser" parameterType="com.example.user.entity.user.User">

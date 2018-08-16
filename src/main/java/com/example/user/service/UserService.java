@@ -15,14 +15,14 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User saveUser(UserRequest userRequest){
+    public Long saveUser(UserRequest userRequest){
         User userExist = userDao.findByEmailOrTel(userRequest.getEmail(), userRequest.getTel());
         if (userExist != null){
             throw new RuntimeException("用户已经存在了。");
         }
         User user = User.DoFromRequestForm(userRequest, passwordEncoder.encode(userRequest.getPassword()));
         userDao.insertUser(user);
-        return user;
+        return user.getId();
     }
 
     public User findUserByEmailOrTel(String username) {
@@ -41,4 +41,5 @@ public class UserService {
         userDao.updateUser(user);
         return user;
     }
+
 }

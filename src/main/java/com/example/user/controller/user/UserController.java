@@ -37,7 +37,7 @@ public class UserController {
     @PostMapping
     public Long saveUser(@RequestBody UserRequest userRequest,
                          @AuthenticationPrincipal CurrentUser user){
-        return userService.saveUser(userRequest).getId();
+        return userService.saveUser(userRequest);
     }
 
     /**
