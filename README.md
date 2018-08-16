@@ -20,13 +20,13 @@ public static void main(String[] args){}
     3)：CustomMethodSecurityExpressionRoot：权限注解主体，重载spring自带的权限注解；<br>
     4)：MethodSecurityConfig：配置文件，主要配置permissionEvaluator和expressionHandler。之前有个配置写错，搞了差不多一个星期，@EnableGlobalMethodSecurity(prePostEnabled = true)这个注解全文只可以有一个，如果有两个，会导致其中一个配置文件失效；<br>
     注：这四个是配置权限注解(@PreAuthorize())，详见：https://www.baeldung.com/spring-security-create-new-custom-security-expression<br>
-  * InitRolePermissionBean：初始化redis中的角色与权限的关系，载入系统所有的角色及权限，用于CustomMethodSecurityExpressionRoot在获取用户角色时，判断用户所拥有的权限。
-constant：<br>
-controller：<br>
-dao：<br>
-entity：<br>
-security：<br>
-util：<br>
+  * InitRolePermissionBean：初始化redis中的角色与权限的关系，载入系统所有的角色及权限，用于CustomMethodSecurityExpressionRoot在获取用户角色时，判断用户所拥有的权限。<br>
+  * 其他配置就不缀述了，有很多资料可查，且在代码中也有明确的注释
+* security：clientId与grantType判断，用户登录，token封装与解析等配置
+  * ClientDetails(Service)，重写spring自带的clientDetails(Service)，查询的就是entity下的Oauth2Client及grantType<br>
+  * userDetails(Service)，自定义user登录验证
+  * tokenConverter，从token中获取权限列表及用户数据
+  * tokenEnhancer，将用户数据及用户权限封装入token中
 
 大标题
 ====
