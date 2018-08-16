@@ -6,15 +6,15 @@ security:
             filter-order: 3
 
 spring:
-#    application:
-#        name: creams-web-service
+    application:
+        name: user-service
 #    cloud:
 #        config:
 #            uri: https://config.****.**
 #            username: *****
 #            password: ********
     datasource:
-        url: jdbc:mysql://localhost:3306/web_test?useUnicode=true&characterEncoding=utf8&useSSL=true
+        url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf8&useSSL=true
         username: root
         password: lh1203
     ###############################
