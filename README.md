@@ -7,9 +7,10 @@ user-service用户系统
 这个用于之后搭建spring cloud的用户系统，目前刚开始。还没想太清楚写个什么demo项目，会将相关知识点慢慢整合进这个项目中。<br>
 
 要点：<br>
-一：jwt+oauth2配置(参考项目中使用代码完成)<br>
-二：redis缓存存储 参考：https://www.cnblogs.com/yanduanduan/p/6552861.html(这个内容挺全的)<br>
-三：自定义权限注解(custom security expression) 参考见：https://www.baeldung.com/spring-security-create-new-custom-security-expression<br>
+一、jwt+oauth2<br>
+二、redis缓存存储 参考：https://www.cnblogs.com/yanduanduan/p/6552861.html(这个内容挺全的)<br>
+三、自定义权限注解(custom security expression) 参考见：https://www.baeldung.com/spring-security-create-new-custom-security-expression<br>
+四、java8的stream操作(这个之后再写个单独的demo项目)
 
 配置结构简单简单说下，其他的东西大家都能秒懂。<br>
 * config：配置文件所在目录<br>
