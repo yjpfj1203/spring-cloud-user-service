@@ -85,7 +85,7 @@ user-service用户系统
 ![junit配置test文件的输出位置](https://raw.githubusercontent.com/yjpfj1203/static-resource/master/jUnit-properties.png)
 内容如上图，Output Path:  ${SOURCEPATH}/../../test/java/${PACKAGE}/${FILENAME}<br>
 
-配置JUnit4的默认填充内容，如下图<br>
+重写JUnit4模块的内容，如下图<br>
 ![junit配置输出文件内容](https://raw.githubusercontent.com/yjpfj1203/static-resource/master/junit4-code.png)
 具体内容如下<br>
 ```velocity
