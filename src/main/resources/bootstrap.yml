@@ -6,6 +6,10 @@ security:
             filter-order: 3
 
 spring:
+    flyway:
+        enabled: true
+        baselineOnMigrate: true
+        locations: classpath:db/migration
     application:
         name: user-service
 #    cloud:
@@ -30,6 +34,8 @@ mybatis:
     type-aliases-package: com.example.user.dao
 web:
     jwtFileName: jwt.jks
+
+
 
 #生成jwt.jks的方式如下
 #keytool -genkeypair -alias liuhan -keyalg RSA  -keypass yjpfj1203  -keystore jwt.jks  -storepass yjpfj1203
