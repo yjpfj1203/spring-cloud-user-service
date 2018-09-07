@@ -13,6 +13,17 @@
         <collection property="grantTypes" ofType="java.lang.String" javaType="java.util.Set">
             <result column="grant_type"/>
         </collection>
+        <!-- 下面是对象 仅为示例-->
+        <!--<association property="termination" javaType="io.creams.statistics.model.assets.ContractTerminationModel">-->
+            <!--<result property="terminationDate" column="terminationDate"/>-->
+            <!--<collection property="bills" ofType="io.creams.statistics.model.assets.ContractTerminationBillModel">-->
+                <!--<result property="primeAmount" column="terminationPrimeAmount"/>-->
+            <!--</collection>-->
+        <!--</association>-->
+        <!-- 下面是集合 -->
+        <!--<collection property="rooms" ofType="io.creams.statistics.model.assets.ContractRoomModel">-->
+            <!--<result property="roomNumber" column="roomNumber"/>-->
+        <!--</collection>-->
     </resultMap>
 
     <select id="findByClientId" resultMap="base-column-oauth2_client">
