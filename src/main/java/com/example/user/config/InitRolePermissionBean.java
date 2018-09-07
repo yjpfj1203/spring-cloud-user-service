@@ -12,6 +12,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -64,8 +65,10 @@ public class InitRolePermissionBean {
 
     /**
      * 启动时执行，方式三，类
+     * ApplicationRunner可以添加注解@order，用于指定执行顺序
      */
     @Component
+    @Order(2)
     public static class MyApplicationRunner implements ApplicationRunner {
 
         @Override
