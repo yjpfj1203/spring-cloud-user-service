@@ -29,7 +29,6 @@ public class UserController {
 
     @GetMapping(value = "/test")
     public String testNoToken(@AuthenticationPrincipal CurrentUser user){
-
         return "无token验证OK";
     }
 
